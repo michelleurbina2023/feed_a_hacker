@@ -1,0 +1,11 @@
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootstrap-responsive";
+
+body {
+  background-image: url(/assets/sky_background.jpeg)
+}
+
+#feed-hacker-front {
+  font-size: 100px;
+}

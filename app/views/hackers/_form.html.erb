@@ -1,0 +1,63 @@
+<%= form_for(@hacker) do |f| %>
+  <% if @hacker.errors.any? %>
+    <ul>
+      <% @hacker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p>
+    <%= f.label :email, "Email address" %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, "Confirm password" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.label :first_name, "First name" %>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name, "Last name" %>
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :address, "Physical address" %>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :stack, "Tech stack" %>
+    <%= f.text_field :stack %>
+  </p>
+  <p>
+    <%= f.label :current_projects, "Current projects" %>
+    <%= f.text_field :current_projects %>
+  </p>
+  <p>
+    <%= f.label :objectives, "Future objectives" %>
+    <%= f.text_field :objectives %>
+  </p>
+  <p>
+    <%= f.label :portfolio_url, "Personal website" %>
+    <%= f.text_field :portfolio_url %>
+  </p>
+  <p>
+    <%= f.label :git_url, "Github" %>
+    <%= f.text_field :git_url %>
+  </p>
+  <p>
+    <%= f.label :twitter_url, "Twitter" %>
+    <%= f.text_field :twitter_url %>
+  </p>
+  <p>
+    <%= f.label :avatar_url, "Avatar" %>
+    <%= f.text_field :avatar_url %>
+  </p>
+
+  <p><%= f.submit (@hacker.new_record? ? "Sign up" : "Update") %></p>
+<% end %>

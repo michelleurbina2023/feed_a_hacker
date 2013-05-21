@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: hacker_dev
+  pool: 5
+  username: JFP
+  password:
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: hacker_test
+  pool: 5
+  username: JFP
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: hacker_prod
+  username: JFP
+  password:
+  pool: 5
+  timeout: 5000

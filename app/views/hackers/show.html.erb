@@ -1,0 +1,27 @@
+<div class="row-fluid">
+  <div class="span4">
+    <p><strong>Name</strong><br> <%= @hacker.first_name %> <%= @hacker.last_name %></p><br>
+    <p><strong>Email</strong><br> <%= @hacker.email %></p><br>
+    <p><strong>Address</strong><br> <%= @hacker.address %></p><br>
+    <p><strong>Tech stack</strong><br> <%= @hacker.stack %></p><br>
+    <p><strong>Current projects</strong><br> <%= @hacker.current_projects %></p><br>
+    <p><strong>Objectives</strong><br> <%= @hacker.objectives %></p><br>
+    <table>
+      <thead></thead>
+      <tbody>
+        <tr>
+          <td><a href="<%= @hacker.git_url %>"><img src="/assets/git_icon.png"></a></td>
+          <td></td>
+          <td><a href="<%= @hacker.twitter_url %>"><img src="/assets/twitter_icon.png"></a></td>
+          <td></td>
+          <td><a href="<%= @hacker.portfolio_url %>"><img src="/assets/website_icon.png"></a></td>
+        <td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="span6 offset1">
+    <p><img src="<%= @hacker.avatar_url %>"></p><br>
+  </div>
+</div>
