@@ -5,6 +5,8 @@ Feedhacker::Application.routes.draw do
 
   get 'loggedin' => 'sites#logged_in', :as => :loggedin
 
+  get 'thanks' => 'sites#thanks', :as => :thanks
+
   match 'signup' => 'hackers#new', :as => :signup
 
   match 'logout' => 'sessions#destroy', :as => :logout
