@@ -3,7 +3,7 @@
     Stripe.setPublishableKey('#{STRIPE_PUBLISHABLE_KEY}');
   });
 
-= form_for Payment.new do |f|
+= form_for @payment do |f|
   = label_tag :card_number, 'Card Number'
   = text_field_tag :card_number, nil, :name => nil
   = label_tag :ccv, 'CCV'

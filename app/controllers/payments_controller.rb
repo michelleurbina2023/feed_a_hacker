@@ -1,6 +1,10 @@
 class PaymentsController < ApplicationController
+before_filter :load_hacker
   def new
+    @payment = Payment.new
+    @payment.hacker = @hacker
   end
+
   def create
     token = params[:payment][:stripe_token]
     begin
@@ -10,5 +14,11 @@ class PaymentsController < ApplicationController
     rescue Stripe::InvalidRequestError => e
       # Card declined...  redirect or render error page here.
     end
+  end
+
+  private
+
+  def load_hacker
+    @hacker = Hacker.find(params[:hacker_id]) rescue nil
   end
 end

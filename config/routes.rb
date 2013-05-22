@@ -3,6 +3,8 @@ Feedhacker::Application.routes.draw do
 
   get 'about' => 'sites#about', :as => :about
 
+  get 'loggedin' => 'sites#logged_in', :as => :loggedin
+
   match 'signup' => 'hackers#new', :as => :signup
 
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -15,11 +17,13 @@ Feedhacker::Application.routes.draw do
 
   root :to => "sites#home"
 
-  resources :payments
-
   resources :sessions, :except => [:update, :show, :edit, :index]
 
-  resources :hackers
+  resources :payments
+
+  resources :hackers do
+    resources :payments
+  end
 
   root :to => 'sites#home'
 end

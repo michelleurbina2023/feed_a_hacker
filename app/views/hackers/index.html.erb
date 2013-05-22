@@ -1,10 +1,15 @@
+<a class="btn btn-danger" href="<%= home_path %>">Back to Home</a><br><br>
+
 <table>
   <thead></thead>
   <tbody>
-    <% for hacker in @hackers %>
+    <% @hackers.each_slice(5).each do |hackers| %>
      <tr>
-      <td><%= link_to hacker.first_name, hacker_path(hacker)%></td>
+      <% hackers.each do |hacker| %>
+        <td><%= link_to image_tag(hacker.avatar_url, :size => "250x250"), hacker %></td>
+      <% end %>
      </tr>
     <% end %>
   </tbody>
 </table>
+<br><br><br><br><br>
