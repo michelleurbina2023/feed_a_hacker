@@ -1,0 +1,17 @@
+:javascript
+  $(function() {
+    Stripe.setPublishableKey('#{STRIPE_PUBLISHABLE_KEY}');
+  });
+
+= form_for Payment.new do |f|
+  = label_tag :card_number, 'Card Number'
+  = text_field_tag :card_number, nil, :name => nil
+  = label_tag :ccv, 'CCV'
+  = text_field_tag :cvv, nil, :name => nil
+  = label_tag :expiration, 'Expiration Date'
+  = select_month Date.today, {}, :name => nil
+  = select_year Date.today, { :start_year => Date.today.year, :end_year => Date.today.year + 15 }, :name => nil
+  = f.hidden_field :stripe_token
+  %br
+  = f.submit 'Submit Payment'
+

@@ -11,6 +11,8 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'stripe'
+gem 'sass'
+gem 'haml'
 
 # Factory Girl + Capybara + RSPEC testing
 

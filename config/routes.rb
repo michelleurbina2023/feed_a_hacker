@@ -11,7 +11,11 @@ Feedhacker::Application.routes.draw do
 
   match 'hacker/edit' => 'hackers#edit', :as => :edit_current_hacker
 
+  match 'payments/new' => 'payments#new', :as => :new_payment
+
   root :to => "sites#home"
+
+  resources :payments
 
   resources :sessions, :except => [:update, :show, :edit, :index]
 

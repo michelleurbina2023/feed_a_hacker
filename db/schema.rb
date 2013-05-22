@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521092200) do
+ActiveRecord::Schema.define(:version => 20130522162856) do
 
   create_table "hackers", :force => true do |t|
     t.string   "first_name"
@@ -30,5 +30,18 @@ ActiveRecord::Schema.define(:version => 20130521092200) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "hacker_id"
+    t.decimal  "amount",            :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "fee",               :precision => 10, :scale => 2, :default => 0.0
+    t.string   "charge_identifier"
+    t.boolean  "test_mode",                                        :default => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
+  end
+
+  add_index "payments", ["hacker_id"], :name => "index_payments_on_hacker_id"
+  add_index "payments", ["test_mode"], :name => "index_payments_on_test_mode"
 
 end

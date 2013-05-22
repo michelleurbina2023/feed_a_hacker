@@ -1,6 +1,8 @@
 class Hacker < ActiveRecord::Base
   attr_accessible :address, :current_projects, :email, :first_name, :git_url, :avatar_url, :last_name, :objectives, :password_confirmation, :password, :portfolio_url, :stack, :twitter_url
 
+  has_many :payments
+
   attr_accessor :password
   before_save :encrypt_password
 
