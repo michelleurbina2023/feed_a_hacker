@@ -10,6 +10,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
         <% if current_hacker %>
+          <li><a href="<%= edit_hacker_path(current_hacker) %>">Edit profile</a></li>
           <li><a href="<%= logout_path %>">Logout</a></li>
         <% else %>
           <li><a href="<%= signup_path %>">Sign up</a></li>
