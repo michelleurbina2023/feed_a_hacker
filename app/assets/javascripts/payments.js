@@ -8,7 +8,9 @@ $(function() {
         expMonth: $('#date_month').val(),
         expYear: $('#date_year').val()
       }
+      console.log(['card', card])
       Stripe.createToken(card, function(status, response) {
+        console.log(['status', status])
         if (status == 200) {
           $('#payment_stripe_token').val(response.id);
           $('form#new_payment')[0].submit();

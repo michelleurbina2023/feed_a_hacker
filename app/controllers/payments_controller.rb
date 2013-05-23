@@ -13,10 +13,10 @@ before_filter :load_hacker
     token = params[:payment][:stripe_token]
     begin
       # It should be noted stripe deals only in integer change, so the charge below is $10.00.  Same applies to fees.
-      charge = Stripe::Charge.create(:amount => 1000, :currency => 'usd', :card => token, :description => 'payment')
+      charge = Stripe::Charge.create(:amount => 1000, :currency => 'gbp', :card => token, :description => 'payment')
       Payment.create(:hacker => @hacker, :amount => 10.00, :fee => (charge.fee / 100.0), :charge_identifier => charge.id, :test_mode => Rails.env.development?)
       redirect_to thanks_url
-    rescue Stripe::InvalidRequestError => e
+    rescue Stripe::CardError => e
       redirect_to new_hacker_payment_path(@hacker), :error => "Card denied."
     end
   end
