@@ -17,7 +17,7 @@ before_filter :load_hacker
       Payment.create(:hacker => @hacker, :amount => 10.00, :fee => (charge.fee / 100.0), :charge_identifier => charge.id, :test_mode => Rails.env.development?)
       redirect_to thanks_url
     rescue Stripe::InvalidRequestError => e
-      # Card declined...  redirect or render error page here.
+      redirect_to new_hacker_payment_path(@hacker), :error => "Card denied."
     end
   end
 

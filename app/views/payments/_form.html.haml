@@ -3,7 +3,7 @@
     Stripe.setPublishableKey('#{STRIPE_PUBLISHABLE_KEY}');
   });
 
-= form_for @payment do |f|
+= form_for [@hacker, @payment] do |f|
   = label_tag :card_number, 'Card Number'
   = text_field_tag :card_number, nil, :name => nil
   = label_tag :ccv, 'CCV'
@@ -12,6 +12,7 @@
   = select_month Date.today, {}, :name => nil
   = select_year Date.today, { :start_year => Date.today.year, :end_year => Date.today.year + 15 }, :name => nil
   = f.hidden_field :stripe_token
+  = f.hidden_field :hacker_id
   %br
   = f.submit 'Submit Payment'
 
