@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130522162856) do
     t.string   "password_salt"
     t.string   "portfolio_url"
     t.string   "stack"
+    t.string   "best_project"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

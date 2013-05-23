@@ -14,6 +14,7 @@ class CreateHackers < ActiveRecord::Migration
       t.string :password_salt
       t.string :portfolio_url
       t.string :stack
+      t.string :best_project
 
       t.timestamps
     end

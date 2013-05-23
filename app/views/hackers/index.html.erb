@@ -1,15 +1,22 @@
 <a class="btn btn-danger" href="<%= home_path %>">Back to Home</a><br><br>
 
-<table>
-  <thead></thead>
-  <tbody>
-    <% @hackers.each_slice(5).each do |hackers| %>
-     <tr>
-      <% hackers.each do |hacker| %>
-        <td><%= link_to image_tag(hacker.avatar_url, :size => "250x250"), hacker %></td>
+  <table>
+    <thead></thead>
+    <tbody>
+      <% @hackers.each_slice(5).each do |hackers| %>
+       <tr>
+        <% hackers.each do |hacker| %>
+          <td class="hacker">
+            <%= link_to image_tag(hacker.avatar_url, :size => "250x250"), hacker %>
+            <div class="hacker-popup" style="display: none;">
+              <div class="hacker_name">
+                <%= "#{hacker.first_name} #{hacker.last_name}" %>
+              </div>
+            </div>
+          </td>
+        <% end %>
+       </tr>
       <% end %>
-     </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 <br><br><br><br><br>

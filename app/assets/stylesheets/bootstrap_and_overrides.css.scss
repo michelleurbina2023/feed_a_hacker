@@ -3,7 +3,7 @@ body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
 body {
-  background-image: url(/assets/sky_background.jpeg)
+  background: url(/assets/sky_background.jpeg) fixed;
 }
 
 #feed-hacker-front {
@@ -24,4 +24,19 @@ body {
 #feed-hacker-log {
   font-size: 50px;
   font-family: 'Sarina', cursive;
+}
+
+#feed-hacker-chuck {
+  font-size: 35px;
+  font-family: 'Sarina', cursive;
+}
+
+#feed-hacker-titles {
+  font-size: 20px;
+  font-family: 'Sarina', cursive;
+}
+
+#feed-hacker-info {
+  font-size: 16px;
+  font-family: 'Book Antiqua', serif;
 }
