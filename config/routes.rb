@@ -7,6 +7,8 @@ Feedhacker::Application.routes.draw do
 
   get 'thanks' => 'sites#thanks', :as => :thanks
 
+  get 'donations' => 'sites#donations', :as => :donations
+
   match 'signup' => 'hackers#new', :as => :signup
 
   match 'logout' => 'sessions#destroy', :as => :logout

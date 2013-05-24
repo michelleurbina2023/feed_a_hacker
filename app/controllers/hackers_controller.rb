@@ -22,7 +22,7 @@ class HackersController < ApplicationController
   def create
     @hacker = Hacker.new(params[:hacker])
     if @hacker.save
-      redirect_to root_url, :notice => "Signed up!"
+      redirect_to hackers_url, :notice => "Signed up!"
     else
       render "new"
     end
@@ -51,7 +51,7 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.update_attributes(params[:hacker])
-        format.html { redirect_to root_url, notice: 'Your profile was successfully updated.' }
+        format.html { redirect_to hackers_url, notice: 'Your profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
