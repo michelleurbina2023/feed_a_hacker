@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
   <head>
-    <link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "The Hacker Farm" %></title>
@@ -13,18 +12,10 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div>
-
-              <%= yield %>
-
-            </div>
-          </div>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div> <!--! end of .container -->
   </body>
 </html>

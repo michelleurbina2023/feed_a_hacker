@@ -1,4 +1,3 @@
-<div class="hacker-form">
 <%= form_for(@hacker) do |f| %>
   <% if @hacker.errors.any? %>
     <ul>
@@ -8,11 +7,8 @@
     </ul>
   <% end %>
 
-  <div class="hacker-form-title">
-    <p>Give us a few details</p>
-  </div>
+  <p>Give us a few details</p>
 
-  <div class="hacker-form-labels">
   <p>
     <%= f.label :first_name, "Input your first name:" %>
     <%= f.text_field :first_name %>
@@ -83,6 +79,5 @@
 
   <p><%= f.submit (@hacker.new_record? ? "Create" : "Update profile"), :class => "btn btn-info" %></p>
 
-  </div>
 <% end %>
-</div>
+
