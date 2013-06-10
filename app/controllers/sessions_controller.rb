@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     hacker = Hacker.authenticate(params[:email], params[:password])
     if hacker
       session[:hacker_id] = hacker.id
-      redirect_to loggedin_path, :notice => "Logged in!"
+      redirect_to hackers_path, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
       render "new"

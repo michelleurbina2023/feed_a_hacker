@@ -1,5 +1,5 @@
 class HackersController < ApplicationController
-  # before_filter :authorize, :except => [:new, :create]
+  before_filter :parse_full_name, :only => [:update]
 
   def index
     @hackers = Hacker.all
@@ -22,7 +22,8 @@ class HackersController < ApplicationController
   def create
     @hacker = Hacker.new(params[:hacker])
     if @hacker.save
-      redirect_to hackers_url, :notice => "Signed up!"
+      session[:hacker_id] = @hacker.id
+      redirect_to @hacker, :notice => "Signed up!"
     else
       render "new"
     end
@@ -51,7 +52,7 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.update_attributes(params[:hacker])
-        format.html { redirect_to hackers_url, notice: 'Your profile was successfully updated.' }
+        format.html { redirect_to @hacker, notice: 'Your profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -67,6 +68,17 @@ class HackersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def parse_full_name
+    if params[:hacker].has_key?(:full_name)
+      full_name = params[:hacker].delete(:full_name)
+      names = full_name.split(/ /)
+      params[:hacker][:last_name] = names.last
+      params[:hacker][:first_name] = names[0..-2].join(" ")
     end
   end
 end

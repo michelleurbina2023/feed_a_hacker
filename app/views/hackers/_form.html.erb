@@ -1,3 +1,4 @@
+<div class="hacker-form">
 <%= form_for(@hacker) do |f| %>
   <% if @hacker.errors.any? %>
     <ul>
@@ -6,62 +7,82 @@
       <% end %>
     </ul>
   <% end %>
+
+  <div class="hacker-form-title">
+    <p>Give us a few details</p>
+  </div>
+
+  <div class="hacker-form-labels">
   <p>
-    <%= f.label :email, "Email address" %>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password, "Password" %>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Confirm password" %>
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= f.label :first_name, "First name" %>
+    <%= f.label :first_name, "Input your first name:" %>
     <%= f.text_field :first_name %>
   </p>
   <p>
-    <%= f.label :last_name, "Last name" %>
+    <%= f.label :last_name, "Input your last name:" %>
     <%= f.text_field :last_name %>
   </p>
   <p>
-    <%= f.label :address, "Physical address" %>
-    <%= f.text_field :address %>
+    <%= f.label :email, "What's your preferred email address?" %>
+    <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :stack, "Tech stack" %>
-    <%= f.text_field :stack %>
+    <%= f.label :password, "Choose a password (make it secure and longer than 4 characters):" %>
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :current_projects, "Current projects" %>
-    <%= f.text_field :current_projects %>
-  </p>
-  <p>
-    <%= f.label :objectives, "Future objectives" %>
-    <%= f.text_field :objectives %>
-  </p>
-  <p>
-    <%= f.label :best_project, "Best work" %>
-    <%= f.text_field :best_project %>
-  </p>
-  <p>
-    <%= f.label :portfolio_url, "Personal website" %>
-    <%= f.text_field :portfolio_url %>
-  </p>
-  <p>
-    <%= f.label :git_url, "Github" %>
-    <%= f.text_field :git_url %>
-  </p>
-  <p>
-    <%= f.label :twitter_url, "Twitter" %>
-    <%= f.text_field :twitter_url %>
-  </p>
-  <p>
-    <%= f.label :avatar_url, "Avatar" %>
-    <%= f.text_field :avatar_url %>
+    <%= f.label :password_confirmation, "Please confirm your password:" %>
+    <%= f.password_field :password_confirmation %>
   </p>
 
-  <p><%= f.submit (@hacker.new_record? ? "Sign up" : "Update") %></p>
+  <% unless controller.action_name == 'new' %>
+    <p>
+      <%= f.label :background, "Upload a background image for your portfolio (choose a picture of you doing something awesome):" %>
+      <%= f.file_field :background %>
+    </p>
+    <p>
+      <%= f.label :title, "Give yourself a raison d'etre (i.e. Padawan developer, UX wizard, Design fanatic):" %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :location, "Input your current location (i.e. London, Panama City, the Himalayas):" %>
+      <%= f.text_field :location %>
+    </p>
+    <p>
+      <%= f.label :tag_line, "Write a catchy tag line (i.e. Building awesome things at Google, Inventing the digital answer to poverty):" %>
+      <%= f.text_field :tag_line %>
+    </p>
+    <p>
+      <%= f.label :project_img, "Upload a screenshot of your project's most attractive page:" %>
+      <%= f.text_field :project_img %>
+    </p>
+    <p>
+      <%= f.label :project_des, "Write a short description of your project:" %>
+      <%= f.text_field :project_des %>
+    </p>
+    <p>
+      <%= f.label :project_url, "Input your project's URL:" %>
+      <%= f.text_field :project_url %>
+    </p>
+    <p>
+      <%= f.label :twitter_url, "Input your Twitter URL:" %>
+      <%= f.text_field :twitter_url %>
+    </p>
+    <p>
+      <%= f.label :git_url, "Input your Github URL:" %>
+      <%= f.text_field :git_url %>
+    </p>
+    <p>
+      <%= f.label :hackernews_url, "Input your HackerNews URL:" %>
+      <%= f.text_field :hackernews_url %>
+    </p>
+    <p>
+      <%= f.label :linkedin_url, "Input your LinkedIn URL:" %>
+      <%= f.text_field :linkedin_url %>
+    </p>
+  <% end %>
+
+  <p><%= f.submit (@hacker.new_record? ? "Create" : "Update profile"), :class => "btn btn-info" %></p>
+
+  </div>
 <% end %>
+</div>

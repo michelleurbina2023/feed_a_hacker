@@ -13,6 +13,8 @@ gem 'jquery-rails'
 gem 'stripe'
 gem 'sass'
 gem 'haml'
+gem 'paperclip'
+gem 'rmagick'
 
 # Factory Girl + Capybara + RSPEC testing
 

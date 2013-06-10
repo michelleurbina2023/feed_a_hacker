@@ -1,6 +1,7 @@
 class Hacker < ActiveRecord::Base
-  attr_accessible :address, :current_projects, :best_project, :email, :first_name, :git_url, :avatar_url, :last_name, :objectives, :password_confirmation, :password, :portfolio_url, :stack, :twitter_url
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :background, :title, :location, :tag_line, :project_img, :project_des, :project_url, :git_url, :hackernews_url, :linkedin_url, :twitter_url
 
+  has_attached_file :background
   has_many :payments
 
   attr_accessor :password
@@ -26,8 +27,17 @@ class Hacker < ActiveRecord::Base
 
   def encrypt_password
     if password.present?
-        self.password_salt = BCrypt::Engine.generate_salt
-        self.password_hash = BCrypt::Engine.hash_secret(password, self.password_salt)
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password, self.password_salt)
     end
   end
+
+  def full_name
+    return "" if self.first_name.blank? && self.last_name.blank?
+    names = []
+    names << self.first_name unless self.first_name.blank?
+    names << self.last_name unless self.last_name.blank?
+    names.join(" ")
+  end
+
 end

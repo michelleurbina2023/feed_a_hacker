@@ -1,41 +1,39 @@
-<div class="row-fluid">
-  <div class="span4">
-
-    <a class="btn btn-danger" href="<%= hackers_path %>">Back to the Hackers</a>
-    <% if current_hacker == @hacker %>
-      <a class="btn btn-success" href="<%= edit_hacker_path(current_hacker) %>">Edit your Profile</a>
-      <p><br><%= render :partial => 'private_data', :locals => { :hacker => current_hacker } %><br></p>
-    <% else %>
-      <a class="btn btn-success" href="<%= new_hacker_payment_path(@hacker) %>">Support this Hacker</a><br><br>
-    <% end %>
-
-    <p><span id="feed-hacker-titles">Name</span><br> <span id="feed-hacker-info"><%= @hacker.first_name %> <%= @hacker.last_name %></span></p><br>
-    <p><span id="feed-hacker-titles">Address</span><br> <span id="feed-hacker-info"><%= @hacker.address %></span></p><br>
-    <p><span id="feed-hacker-titles">Tech stack</span><br> <span id="feed-hacker-info"><%= @hacker.stack %></span></p><br>
-    <p><span id="feed-hacker-titles">Current projects</span><br> <span id="feed-hacker-info"><%= @hacker.current_projects %></span></p><br>
-    <p><span id="feed-hacker-titles">Objectives</span><br> <span id="feed-hacker-info"><%= @hacker.objectives %></span></p><br>
-
-    <table>
-      <thead></thead>
-      <tbody>
-        <tr>
-          <td><a href="<%= @hacker.best_project %>"><img src="/assets/project_img.png"></a></td>
-          <td></td>
-          <td><a href="<%= @hacker.git_url %>"><img src="/assets/git_icon.png"></a></td>
-          <td></td>
-          <td><a href="<%= @hacker.twitter_url %>"><img src="/assets/twitter_icon.png"></a></td>
-          <td></td>
-          <td><a href="<%= @hacker.portfolio_url %>"><img src="/assets/website_icon.png"></a></td>
-          <td></td>
-          <td><a href="mailto:<%= @hacker.email %>?subject=RE: Loving the Code"><img src="/assets/email_icon.png"></a></td>
-        <td>
-        </tr>
-      </tbody>
-    </table>
-
+<div class="container">
+  <div id="content">
+    <h1>
+      <span class="editable feed-hacker-info" data-name="full_name"><%= @hacker.full_name %><span class="edit_link">edit</span></span>
+    </h1>
+    <h2>
+      <span class="editable feed-hacker-info" data-name="title"><%= @hacker.title %> in <span class="edit_link">edit</span></span>
+      <span class="editable feed-hacker-info" data-name="location"><%= @hacker.location %>.<span class="edit_link">edit</span></span>
+    </h2>
+    <h2>
+      <span class="editable feed-hacker-info" data-name="tag_line"><%= @hacker.tag_line %><span class="edit_link">edit</span></span>
+    </h2>
+    <ul>
+      <li><span class="editable feed-hacker-info" data-name="email"><a href="mailto:<%= @hacker.email %>" target="_blank">Contact</a><span class="edit_link">edit</span></span></li>
+      <li><span class="editable feed-hacker-info" data-name="twitter_url"><a href="<%= @hacker.twitter_url %>" target="_blank">Twitter</a><span class="edit_link">edit</span></span></li>
+      <li><span class="editable feed-hacker-info" data-name="git_url"><a href="<%= @hacker.git_url %>" target="_blank">Github</a><span class="edit_link">edit</span></span></li>
+      <li><span class="editable feed-hacker-info" data-name="hackernews_url"><a href="<%= @hacker.hackernews_url %>" target="_blank">HNews</a><span class="edit_link">edit</span></span></li>
+      <li><span class="editable feed-hacker-info" data-name="linkedin_url"><a href="<%= @hacker.linkedin_url %>" target="_blank">LinkedIn</a><span class="edit_link">edit</span></span></li>
+    </ul>
+    <h3>
+      <a href="<%= hackers_path %>" target="_blank">Check out my projects!</a>
+    </h3>
   </div>
-
-  <div class="span6 offset1">
-    <p><img src="<%= @hacker.avatar_url %>"></p><br>
-  </div>
+  <img src="<%= @hacker.background %>" id="bg" alt class="bgheight">
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.edit_link').click(function() {
+      var editable = $(this).closest('.editable');
+      var field_name = $(editable).data('name');
+      $(editable).html('<%= form_for @hacker, :remote => :true do |f| %><input name="hacker[' + field_name + ']" type="text" /><% end %>');
+      $(editable).find('form').focus();
+    });
+  });
+</script>
+
+
+

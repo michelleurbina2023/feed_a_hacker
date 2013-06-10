@@ -1,14 +1,6 @@
 Feedhacker::Application.routes.draw do
   get 'home' => 'sites#home', :as => :home
 
-  get 'about' => 'sites#about', :as => :about
-
-  get 'loggedin' => 'sites#logged_in', :as => :loggedin
-
-  get 'thanks' => 'sites#thanks', :as => :thanks
-
-  get 'donations' => 'sites#donations', :as => :donations
-
   match 'signup' => 'hackers#new', :as => :signup
 
   match 'logout' => 'sessions#destroy', :as => :logout

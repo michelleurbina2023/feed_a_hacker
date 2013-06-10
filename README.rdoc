@@ -1,3 +1,98 @@
 == Welcome to Feed a Hacker
 
 This Rails web app aims to utilise the power behind Stripe's payment system to create a crowd donation platform to support hackers of all levels (entry-level, junior, senior, ninja) with small public contributions.
+
+body {
+  background-color: #36454F;
+}
+
+#feed-hacker-front {
+  font-size: 100px;
+  font-family: 'Sarina', cursive;
+  color: #FF7F00;
+}
+
+#feed-hacker-about {
+  font-size: 50px;
+  font-family: 'Sarina', cursive;
+}
+
+#feed-hacker-text {
+  font-size: 26px;
+  font-family: 'Book Antiqua', serif;
+}
+
+#feed-hacker-log {
+  font-size: 50px;
+  font-family: 'Sarina', cursive;
+}
+
+#feed-hacker-chuck {
+  font-size: 35px;
+  font-family: 'Sarina', cursive;
+}
+
+.feed-hacker-titles {
+  font-size: 20px;
+  font-family: 'Sarina', cursive;
+}
+
+#feed-hacker-info {
+  font-size: 16px;
+  font-family: 'Book Antiqua', serif;
+}
+
+#feed-hacker-funds {
+  font-size: 20px;
+  font-family: 'Book Antiqua', serif;
+}
+
+.hacker_name {
+  font-size: 20px;
+  font-family: 'Sarina', cursive;
+}
+
+.hacker-form {
+  background-color: #36454F;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 0px;
+  margin-left: 300px;
+  border-radius: 50px 50px;
+  color: white;
+  width: 500px;
+}
+
+.hacker-form-title {
+  font-size: 30px;
+  font-family: 'Sarina', cursive;
+  padding-bottom: 40px;
+}
+
+.hacker-form-labels {
+  text-align: center;
+}
+
+.btn-info {
+  font-size: 22px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+label {
+  display: inline-block;
+  width: 20%;
+  text-align: left;
+  font-size: 16px;
+}
+
+<a class="btn btn-danger" href="<%= hackers_path %>">Back to the Hackers</a>
+    <% if current_hacker == @hacker %>
+      <a class="btn btn-success" href="<%= edit_hacker_path(current_hacker) %>">Edit your Profile</a>
+      <p><br><%= render :partial => 'private_data', :locals => { :hacker => current_hacker } %><br></p>
+    <% else %>
+      <a class="btn btn-success" href="<%= new_hacker_payment_path(@hacker) %>">Support this Hacker</a><br><br>
+    <% end %>

@@ -11,25 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522162856) do
+ActiveRecord::Schema.define(:version => 20130609135802) do
 
   create_table "hackers", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "address"
-    t.string   "current_projects"
-    t.string   "objectives"
     t.string   "git_url"
     t.string   "twitter_url"
-    t.string   "avatar_url"
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.string   "portfolio_url"
-    t.string   "stack"
-    t.string   "best_project"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "project_img"
+    t.string   "project_des"
+    t.string   "project_url"
+    t.string   "hackernews_url"
+    t.string   "tag_line"
+    t.string   "location"
+    t.string   "title"
+    t.string   "linkedin_url"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   create_table "payments", :force => true do |t|

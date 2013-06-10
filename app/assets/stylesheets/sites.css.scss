@@ -1,3 +1,14 @@
-// Place all the styles related to the Sites controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.logo {
+  position: absolute;
+  z-index: 1;
+  left: 300px;
+  top: 50px;
+}
+
+.mission {
+  position: relative;
+  left: 650px;
+  top: 170px;
+  font: bold 24px/41px Chalkduster;
+  width: 400px;
+}
