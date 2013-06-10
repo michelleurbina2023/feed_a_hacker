@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609135802) do
+ActiveRecord::Schema.define(:version => 20130610154610) do
 
   create_table "hackers", :force => true do |t|
     t.string   "first_name"
@@ -49,5 +49,20 @@ ActiveRecord::Schema.define(:version => 20130609135802) do
 
   add_index "payments", ["hacker_id"], :name => "index_payments_on_hacker_id"
   add_index "payments", ["test_mode"], :name => "index_payments_on_test_mode"
+
+  create_table "projects", :force => true do |t|
+    t.integer  "hacker_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
+  end
+
+  add_index "projects", ["hacker_id"], :name => "index_projects_on_hacker_id"
 
 end

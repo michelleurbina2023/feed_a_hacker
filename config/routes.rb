@@ -17,6 +17,8 @@ Feedhacker::Application.routes.draw do
 
   resources :payments
 
+  resources :projects
+
   resources :hackers do
     resources :payments
   end

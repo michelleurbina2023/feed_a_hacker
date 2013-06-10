@@ -1,16 +1,21 @@
-<div class="span8">
-  <div class="form">
-    <p>Log in</p>
-  <%= form_tag sessions_path do %>
-    <p>
-      <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email] %>
-    </p>
-    <p>
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </p>
-    <p><%= submit_tag "Enter", :class => "btn btn-info" %></p>
+<div class="span4">
+  <div class="login-form">
+    <div class="login-form-inner">
+      <p>Log in</p>
+    <%= form_tag sessions_path do %>
+      <p>
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] %>
+      </p>
+      <p>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </p>
+      <p><%= submit_tag "Enter", :class => "btn btn-info" %></p>
+    <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
+<div class="span8">
+  <img class="login-img" src="assets/create_wallpaper.png" width="600px" height="600px">
 </div>

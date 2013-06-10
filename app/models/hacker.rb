@@ -2,6 +2,7 @@ class Hacker < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :background, :title, :location, :tag_line, :project_img, :project_des, :project_url, :git_url, :hackernews_url, :linkedin_url, :twitter_url
 
   has_attached_file :background
+  has_many :projects
   has_many :payments
 
   attr_accessor :password

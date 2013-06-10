@@ -1,0 +1,22 @@
+img.login-img {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border:10px solid #0088cc;
+  margin-top: 100px;
+}
+
+.login-form {
+  font: bold 25px/41px Chalkduster;
+  display: table;
+  color: #1A1110;
+  min-height: 500px;
+}
+.login-form-inner {
+  display: table-cell;
+}
+
+.container {
+  margin-top: 4em;
+}
