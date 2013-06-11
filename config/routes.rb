@@ -15,12 +15,9 @@ Feedhacker::Application.routes.draw do
 
   resources :sessions, :except => [:update, :show, :edit, :index]
 
-  resources :payments
-
-  resources :projects
-
   resources :hackers do
     resources :payments
+    resources :projects
   end
 
   root :to => 'sites#home'

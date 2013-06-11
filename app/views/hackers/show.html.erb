@@ -1,42 +1,36 @@
 <div class="container">
   <div id="content">
     <h1>
-      <span class="editable feed-hacker-info" data-name="full_name"><%= @hacker.full_name %><span class="edit_link">edit</span></span>
+      <span class="editable feed-hacker-info" data-name="full_name"><%= @hacker.full_name %></span>
     </h1>
     <h2>
-      <span class="editable feed-hacker-info" data-name="title"><%= @hacker.title %>.<span class="edit_link">edit</span></span>
-      <span class="editable feed-hacker-info" data-name="location">In <%= @hacker.location %>.<span class="edit_link">edit</span></span>
+      <span class="editable feed-hacker-info" data-name="title"><%= @hacker.title %> in</span>
+      <span class="editable feed-hacker-info" data-name="location"><%= @hacker.location %>.</span>
     </h2>
     <h2>
-      <span class="editable feed-hacker-info" data-name="tag_line"><%= @hacker.tag_line %><span class="edit_link">edit</span></span>
+      <span class="editable feed-hacker-info" data-name="tag_line"><%= @hacker.tag_line %></span>
     </h2>
     <ul>
-      <li><span class="editable feed-hacker-info" data-name="email"><a href="mailto:<%= @hacker.email %>" target="_blank">Contact</a><span class="edit_link">edit</span></span></li>
-      <li><span class="editable feed-hacker-info" data-name="twitter_url"><a href="<%= @hacker.twitter_url %>" target="_blank">Twitter</a><span class="edit_link">edit</span></span></li>
-      <li><span class="editable feed-hacker-info" data-name="git_url"><a href="<%= @hacker.git_url %>" target="_blank">Github</a><span class="edit_link">edit</span></span></li>
-      <li><span class="editable feed-hacker-info" data-name="hackernews_url"><a href="<%= @hacker.hackernews_url %>" target="_blank">HNews</a><span class="edit_link">edit</span></span></li>
-      <li><span class="editable feed-hacker-info" data-name="linkedin_url"><a href="<%= @hacker.linkedin_url %>" target="_blank">LinkedIn</a><span class="edit_link">edit</span></span></li>
+      <li><span class="editable feed-hacker-info" data-name="email"><a href="mailto:<%= @hacker.email %>" target="_blank">Contact</a></li>
+      <li><span class="editable feed-hacker-info" data-name="twitter_url"><a href="<%= @hacker.twitter_url %>" target="_blank">Twitter</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="git_url"><a href="<%= @hacker.git_url %>" target="_blank">Github</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="hackernews_url"><a href="<%= @hacker.hackernews_url %>" target="_blank">HNews</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="linkedin_url"><a href="<%= @hacker.linkedin_url %>" target="_blank">LinkedIn</a></span></li>
     </ul>
     <h3>
-      <a href="<%= projects_path %>">Check out my projects!</a>
+      <a href="<%= hacker_projects_path(@hacker) %>">Check out my projects!</a>
     </h3>
+    <p>
+      <%= link_to 'Farm', hackers_path, :class => 'btn btn-info' %>
+    <% if current_hacker && current_hacker == @hacker %>
+      <%= link_to 'Edit', edit_hacker_path(@hacker), :class => 'btn btn-warning' %>
+      <%= link_to 'Destroy this Hacker', @hacker, :class => 'btn btn-danger', :method => :delete, :confirm => 'You sure about that?'%>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to 'Help this Hacker grow', new_hacker_payment_path(@hacker), :class => 'btn btn-success' %>
+    </p>
+    <% end %>
   </div>
   <img src="<%= @hacker.background %>" id="bg" alt class="bgheight">
-
-  COOKIES
 </div>
-
-
-<script type="text/javascript">
-  $(function() {
-    $('.edit_link').click(function() {
-      var editable = $(this).closest('.editable');
-      var field_name = $(editable).data('name');
-      $(editable).html('<%= form_for @hacker, :remote => :true do |f| %><input name="hacker[' + field_name + ']" type="text" /><% end %>');
-      $(editable).find('form').focus();
-    });
-  });
-</script>
-
-
-

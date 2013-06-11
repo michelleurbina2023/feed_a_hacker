@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
 before_filter :load_hacker
+
   def new
     @payment = Payment.new
     @payment.hacker = @hacker

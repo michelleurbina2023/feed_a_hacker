@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+before_filter :load_hacker
+
   def index
     @projects = Project.all
 
@@ -18,7 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = current_hacker.projects.new(params[:project])
 
     respond_to do |format|
       if @project.save
@@ -50,7 +52,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_hacker.projects.find(params[:id]) rescue nil
+
+    unless @project
+      redirect_to root_url, :error => 'You cannot update this project!'
+    end
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
@@ -64,12 +70,23 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_hacker.projects.find(params[:id]) rescue nil
+
+    unless @project
+      redirect_to root_url, :error => 'You cannot delete this project!'
+    end
+
     @project.destroy
 
     respond_to do |format|
       format.html { redirect_to_project_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_hacker
+    @hacker = Hacker.find(params[:hacker_id]) rescue nil
   end
 end

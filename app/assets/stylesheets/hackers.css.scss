@@ -1,4 +1,13 @@
 /*HACKER PROFILE*/
+.hacker {
+  font: 20px/30px Chalkduster;
+  border: 5px solid #ED2939;
+  text-align: center;
+  color: black;
+
+}
+
+/*HACKER PROFILE*/
 
 div#content {
   left: 150px;
@@ -97,6 +106,15 @@ span.editable:hover span.edit_link {
 }
 
 .btn-info {
+  font-family: Chalkduster;
+}
+.btn-success {
+  font-family: Chalkduster;
+}
+.btn-danger {
+  font-family: Chalkduster;
+}
+.btn-warning {
   font-family: Chalkduster;
 }
 

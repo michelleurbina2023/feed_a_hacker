@@ -96,3 +96,14 @@ label {
     <% else %>
       <a class="btn btn-success" href="<%= new_hacker_payment_path(@hacker) %>">Support this Hacker</a><br><br>
     <% end %>
+
+    <script type="text/javascript">
+  $(function() {
+    $('.edit_link').click(function() {
+      var editable = $(this).closest('.editable');
+      var field_name = $(editable).data('name');
+      $(editable).html('<%= form_for @hacker, :remote => :true do |f| %><input name="hacker[' + field_name + ']" type="text" /><% end %>');
+      $(editable).find('form').focus();
+    });
+  });
+</script>
