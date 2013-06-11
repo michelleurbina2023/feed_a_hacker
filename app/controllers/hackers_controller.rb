@@ -1,4 +1,5 @@
 class HackersController < ApplicationController
+  before_filter :authorize, :except => [:new, :create, :show, :index]
   before_filter :parse_full_name, :only => [:update]
 
   def index

@@ -4,8 +4,8 @@
       <span class="editable feed-hacker-info" data-name="full_name"><%= @hacker.full_name %><span class="edit_link">edit</span></span>
     </h1>
     <h2>
-      <span class="editable feed-hacker-info" data-name="title"><%= @hacker.title %> in <span class="edit_link">edit</span></span>
-      <span class="editable feed-hacker-info" data-name="location"><%= @hacker.location %>.<span class="edit_link">edit</span></span>
+      <span class="editable feed-hacker-info" data-name="title"><%= @hacker.title %>.<span class="edit_link">edit</span></span>
+      <span class="editable feed-hacker-info" data-name="location">In <%= @hacker.location %>.<span class="edit_link">edit</span></span>
     </h2>
     <h2>
       <span class="editable feed-hacker-info" data-name="tag_line"><%= @hacker.tag_line %><span class="edit_link">edit</span></span>
@@ -18,11 +18,14 @@
       <li><span class="editable feed-hacker-info" data-name="linkedin_url"><a href="<%= @hacker.linkedin_url %>" target="_blank">LinkedIn</a><span class="edit_link">edit</span></span></li>
     </ul>
     <h3>
-      <a href="<%= hackers_path %>" target="_blank">Check out my projects!</a>
+      <a href="<%= projects_path %>">Check out my projects!</a>
     </h3>
   </div>
   <img src="<%= @hacker.background %>" id="bg" alt class="bgheight">
+
+  COOKIES
 </div>
+
 
 <script type="text/javascript">
   $(function() {

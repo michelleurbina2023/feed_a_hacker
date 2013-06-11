@@ -1,0 +1,30 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>Create a new project</p>
+
+  <p>
+    <%= f.label :name, "Give your project a name:" %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description, "Write a short description:" %>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :url, "Input your project's URL (if it's up in the web):" %>
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :screenshot, "Upload a screenshot of your project (pick the most attractive page):" %>
+    <%= f.file_field :screenshot %>
+  </p>
+
+  <p><%= f.submit (@project.new_record? ? "Create" : "Update project"), :class => "btn btn-info" %></p>
+<% end %>
