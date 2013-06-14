@@ -1,3 +1,15 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.carousel-buttons {
+  float: right;
+}
+
+.item {
+  height: 500px;
+  width: 960px;
+  font: 18px/30px Tahoma;
+  color: gray;
+}
+
+.empty-portfolio-title {
+  font: 32px/37px Chalkduster;
+  padding: 125px;
+}

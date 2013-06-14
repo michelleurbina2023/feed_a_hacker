@@ -12,10 +12,10 @@
     </h2>
     <ul>
       <li><span class="editable feed-hacker-info" data-name="email"><a href="mailto:<%= @hacker.email %>" target="_blank">Contact</a></li>
-      <li><span class="editable feed-hacker-info" data-name="twitter_url"><a href="<%= @hacker.twitter_url %>" target="_blank">Twitter</a></span></li>
-      <li><span class="editable feed-hacker-info" data-name="git_url"><a href="<%= @hacker.git_url %>" target="_blank">Github</a></span></li>
-      <li><span class="editable feed-hacker-info" data-name="hackernews_url"><a href="<%= @hacker.hackernews_url %>" target="_blank">HNews</a></span></li>
-      <li><span class="editable feed-hacker-info" data-name="linkedin_url"><a href="<%= @hacker.linkedin_url %>" target="_blank">LinkedIn</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="twitter_url"><a href="http://www.twitter.com/<%= @hacker.twitter_url %>" target="_blank">Twitter</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="git_url"><a href="http://www.github.com/<%= @hacker.git_url %>" target="_blank">Github</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="hackernews_url"><a href="http://news.ycombinator.com/user?id=<%= @hacker.hackernews_url %>" target="_blank">HNews</a></span></li>
+      <li><span class="editable feed-hacker-info" data-name="linkedin_url"><a href="http://www.linkedin.com/in/<%= @hacker.linkedin_url %>" target="_blank">LinkedIn</a></span></li>
     </ul>
     <h3>
       <a href="<%= hacker_projects_path(@hacker) %>">Check out my projects!</a>
@@ -23,8 +23,9 @@
     <p>
       <%= link_to 'Farm', hackers_path, :class => 'btn btn-info' %>
     <% if current_hacker && current_hacker == @hacker %>
-      <%= link_to 'Edit', edit_hacker_path(@hacker), :class => 'btn btn-warning' %>
+      <%= link_to 'Edit', edit_hacker_path(@hacker), :class => 'btn btn-success' %>
       <%= link_to 'Destroy this Hacker', @hacker, :class => 'btn btn-danger', :method => :delete, :confirm => 'You sure about that?'%>
+      <%= link_to 'Logout', logout_path, :class => 'btn btn-warning' %>
     </p>
     <% else %>
     <p>

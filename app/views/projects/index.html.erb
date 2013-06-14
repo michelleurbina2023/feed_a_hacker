@@ -1,25 +1,39 @@
-<div id="project-carousel-id" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">
-    <div class="item active"><!-- class of active since it's the first item -->
-      <img src="<%= @hacker.project.screenshot %>" alt="" />
-      <div class="carousel-caption">
-        <h1><%= @hacker.project.name %></h1>
-        <p><%= @hacker.project.description %></p>
-        <p><%= @hacker.project.url %></p>
-      </div>
-    </div>
-  </div><!-- /.carousel-inner -->
-  <!--  Next and Previous controls below
-        href values must reference the id for this carousel -->
-    <a class="carousel-control left" href="#project-carousel-id" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#project-carousel-id" data-slide="next">&rsaquo;</a>
-</div><!-- /.carousel -->
 
+  <div id="project-carousel" class="carousel slide"><!-- class of slide for animation -->
+    <div class="carousel-inner">
+      <% @hacker.projects.each_with_index do |project, index| %>
+        <div class="item <% if index == 0 %>active<% end %>">
+          <%= image_tag project.screenshot.url, alt: "#{project.hacker.full_name}'s image" %>
+          <div class="carousel-caption">
+            <h2><%= project.name %></h2>
+            <p><%= project.description %></p>
+            <p><a href="<%= project.url %>">Link to project</a></p>
+          </div>
+        </div>
+      <% end %>
+    </div><!-- /.carousel-inner -->
+    <!--  Next and Previous controls below
+          href values must reference the id for this carousel -->
+    <a class="carousel-control left" href="#project-carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#project-carousel" data-slide="next">&rsaquo;</a>
+  </div><!-- /.carousel -->
+
+
+<footer>
+  <% if current_hacker && current_hacker == @hacker %>
+    <%= link_to 'New project', new_hacker_project_path(@hacker), :class => 'btn btn-info' %>
+  <% else %>
+    <p></p>
+  <% end %>
+
+  <%= link_to 'Back to Hacker', hacker_path(@hacker), :class => 'btn btn-danger' %>
+  <%= link_to 'Help this Hacker grow', new_hacker_payment_path(@hacker), :class => 'btn btn-success' %>
+</footer>
 
 <script>
   $(document).ready(function() {
     $('.carousel').carousel({
-      interval: 5000
+      interval: 4000
     });
   });
 </script>
